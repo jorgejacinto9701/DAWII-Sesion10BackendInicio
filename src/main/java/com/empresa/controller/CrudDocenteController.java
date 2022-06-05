@@ -4,12 +4,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -87,29 +85,7 @@ public class CrudDocenteController {
 		return ResponseEntity.ok(salida);
 	}
 	
-	@DeleteMapping("/eliminaDocente/{id}")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> eliminaDocente(@PathVariable("id")int id) {
-		Map<String, Object> salida = new HashMap<>();
-		try {
-			Optional<Docente> opt = service.buscaDocente(id);
-			if (opt.isPresent()) {
-				service.eliminaDocente(id);
-				Optional<Docente> optDocente = service.buscaDocente(id);
-				if (optDocente.isEmpty()) {
-					salida.put("mensaje", Constantes.MENSAJE_ELI_EXITOSO);
-				} else {
-					salida.put("mensaje", Constantes.MENSAJE_ELI_ERROR);
-				}
-			}else {
-				salida.put("mensaje", Constantes.MENSAJE_ELI_NO_EXISTE_ID);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			salida.put("mensaje", Constantes.MENSAJE_ELI_ERROR);
-		}
-		return ResponseEntity.ok(salida);
-	}
+	
 	
 }
 
