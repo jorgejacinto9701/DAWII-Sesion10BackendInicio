@@ -1,6 +1,7 @@
 package com.empresa.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,19 @@ public class DocenteServiceImpl implements DocenteService {
 	public List<Docente> listaDocentePorNombreDniUbigeo(String dni, String nombre, int idUbigeo, int estado) {
 		return repository.listaDocentePorNombreDniUbigeo(dni, nombre, idUbigeo, estado);
 	}
+
+
+	@Override
+	public Docente insertaActualizaDocente(Docente docente) {
+		return repository.save(docente);
+	}
+
+
+	@Override
+	public List<Docente> listaDocentePorNombreLike(String nombre) {
+		return repository.listaPorNombreLike(nombre);
+	}
+
 
 
 

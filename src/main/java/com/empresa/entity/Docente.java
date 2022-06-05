@@ -24,7 +24,7 @@ public class Docente {
 	private String nombre;
 	private String dni;
 	private int estado;
-	  
+	 
 	@ManyToOne
 	@JoinColumn(name = "idUbigeo")
 	private Ubigeo ubigeo;
@@ -32,7 +32,7 @@ public class Docente {
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
 	private Date fechaRegistro;
-	
+
 	
 	public Date getFechaRegistro() {
 		return fechaRegistro;
