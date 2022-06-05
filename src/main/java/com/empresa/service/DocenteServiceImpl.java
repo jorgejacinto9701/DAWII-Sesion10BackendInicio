@@ -34,6 +34,18 @@ public class DocenteServiceImpl implements DocenteService {
 	}
 
 
+	@Override
+	public void eliminaDocente(int id) {
+		repository.deleteById(id);
+	}
+
+
+	@Override
+	public Optional<Docente> buscaDocente(int id) {
+		return repository.findById(id);
+	}
+
+
 
 
 }
